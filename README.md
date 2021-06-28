@@ -65,6 +65,34 @@ php artisan scribe:generate
 
 Para convertir la librería, se pueden utilizar [https://www.apimatic.io/](https://www.apimatic.io/)
 
+## Instalación del proyecto
+
+1. Clona el proyecto en local del repositorio remoto de Git
+2. Crea una BBDD en algún servidor de MySql. Se recomienda utilizar **DBngin** por su simplicidad. 
+3. Pon los datos de conexión en el fichero *.env*. Básicamente:
+
+
+----
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3307
+DB_DATABASE=books
+DB_USERNAME=root
+DB_PASSWORD=
+```
+----
+
+4. Realiza la Migración de la BBDD. 
+```bash
+php artisan migrate
+```
+5. El proyecto tiene un **seeder** que generará 68 libros inventados. Para ejecutarlo:
+```bash
+php artisan db:seed --class=BooksSeeder
+```
+6. Jugar con la Api con *Postman* o *Insomnia* o similar. 
+
 ## Licencia
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
