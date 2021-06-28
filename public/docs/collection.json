@@ -1,0 +1,434 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "lumen-valet.test"
+        }
+    ],
+    "info": {
+        "name": "Laravel Api Documentation Test",
+        "_postman_id": "07a26388-1899-478f-baee-08166195f73f",
+        "description": "A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "Books management Scribe",
+            "description": "\nSCRIBE Documentation. APIs for managing Books. Aqu\u00ed se puede poner todo el texto que se requiera.\n\nPor ejemplo, esto puede ser otro p\u00e1rrafo.\n\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ... cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ... Parte del libro 'Finibus Bonorum et Malorum' de Cicer\u00f3n.",
+            "item": [
+                {
+                    "name": "GET Devuelve Todos los Libros ACTIVOS.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "Se puede dejar que el sistema devuelva autom\u00e1ticamente la respuesta (teniendo Factory y Transformer lo hace) o realizar un json como respuesta",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"T\u00edtulo del Libro\",\n            \"author\": \"Autor del Libro\",\n            \"pages\": 123,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/1\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Asperiores cumque dolor explicabo temporibus fuga.\",\n            \"author\": \"Prof. Alexandro Zieme\",\n            \"pages\": 186,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/5\"\n            }\n        }\n    ]\n}\n",
+                            "name": "200"
+                        }
+                    ]
+                },
+                {
+                    "name": "POST. Crea un libro y lo introduce si es correcto en la colecci\u00f3n",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"Libro de Pruebas\",\"author\":\"Paul Bettenan\",\"pages\":13}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 83,\n        \"title\": \"Libro de Pruebas\",\n        \"author\": \"Paul Bettenan\",\n        \"pages\": 20,\n        \"created_at\": \"2021-06-25\",\n        \"links\": {\n            \"status\": \"created\",\n            \"url\": \"\\\/api\\\/books\\\/83\"\n        }\n    }\n}\n",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"name\": [\n      \"The name has already been taken.\"\n    ],\n    \"author\": [\n      \"The author field is required.\"\n    ]\n  }\n",
+                            "name": "422, Unprocessable Entity"
+                        }
+                    ]
+                },
+                {
+                    "name": "GET Devuelve los datos de un libro existente.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books\/:book_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books\/:book_id",
+                            "variable": [
+                                {
+                                    "id": "book_id",
+                                    "key": "book_id",
+                                    "value": "12",
+                                    "description": "Identificador del libro a devolver"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 83,\n        \"title\": \"Libro de Pruebas\",\n        \"author\": \"Paul Bettenan\",\n        \"pages\": 20,\n        \"created_at\": \"2021-06-25\",\n        \"links\": {\n            \"status\": \"created\",\n            \"url\": \"\\\/api\\\/books\\\/83\"\n        }\n    }\n}\n",
+                            "name": "200, Found"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"status\": \"ERROR\",\n    \"error\": \"404 Not Found\"\n  }\n",
+                            "name": "404, Not Found"
+                        }
+                    ]
+                },
+                {
+                    "name": "PUT. Modificaci\u00f3n de un libro. Debe recibir TODOS los par\u00e1metros del objeto Libro.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books\/:book_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books\/:book_id",
+                            "variable": [
+                                {
+                                    "id": "book_id",
+                                    "key": "book_id",
+                                    "value": "1",
+                                    "description": "Identificador del libro a modificar"
+                                }
+                            ]
+                        },
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"molestiae\",\"author\":\"animi\",\"pages\":169}"
+                        },
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 83,\n        \"title\": \"Libro de Pruebas\",\n        \"author\": \"Paul Bettenan\",\n        \"pages\": 20,\n        \"created_at\": \"2021-06-25\",\n        \"links\": {\n            \"status\": \"created\",\n            \"url\": \"\\\/api\\\/books\\\/83\"\n        }\n    }\n}\n",
+                            "name": "200, Modified"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"status\": \"ERROR\",\n    \"error\": \"404 Not Found\"\n  }\n",
+                            "name": "404, Not Found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"name\": [\n      \"The name has already been taken.\"\n    ],\n    \"author\": [\n      \"The author field is required.\"\n    ]\n  }\n",
+                            "name": "422, Unprocessable Entity"
+                        }
+                    ]
+                },
+                {
+                    "name": "PATCH. Modificaci\u00f3n de parte de un libro. Debe recibir al menos 1 de los par\u00e1metros de entrada",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books\/:book_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books\/:book_id",
+                            "variable": [
+                                {
+                                    "id": "book_id",
+                                    "key": "book_id",
+                                    "value": "1",
+                                    "description": "Identificador del libro a modificar"
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"name\":\"harum\",\"author\":\"aut\",\"pages\":180}"
+                        },
+                        "description": "<aside class=\"notice\">Al menos debes mandar 1 par\u00e1metro del Body \ud83d\ude15<\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": {\n        \"id\": 83,\n        \"title\": \"Libro de Pruebas\",\n        \"author\": \"Paul Bettenan\",\n        \"pages\": 20,\n        \"created_at\": \"2021-06-25\",\n        \"links\": {\n            \"status\": \"created\",\n            \"url\": \"\\\/api\\\/books\\\/83\"\n        }\n    }\n}\n",
+                            "name": "200, Modified"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"status\": \"ERROR\",\n    \"error\": \"404 Not Found\"\n  }\n",
+                            "name": "404, Not Found"
+                        },
+                        {
+                            "header": [],
+                            "code": 422,
+                            "body": "{\n    \"name\": [\n      \"The name has already been taken.\"\n    ],\n    \"author\": [\n      \"The author field is required.\"\n    ]\n  }\n",
+                            "name": "422, Unprocessable Entity"
+                        }
+                    ]
+                },
+                {
+                    "name": "DELETE. Elimina (soft delete) un libro de la colecci\u00f3n",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/books\/:book_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/books\/:book_id",
+                            "variable": [
+                                {
+                                    "id": "book_id",
+                                    "key": "book_id",
+                                    "value": "3",
+                                    "description": "Id del libro a eliminar"
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"T\u00edtulo del Libro\",\n            \"author\": \"Autor del Libro\",\n            \"pages\": 123,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/1\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Asperiores cumque dolor explicabo temporibus fuga.\",\n            \"author\": \"Prof. Alexandro Zieme\",\n            \"pages\": 186,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/5\"\n            }\n        }\n    ]\n}\n",
+                            "name": "200"
+                        },
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n    \"data\": [\n        {\n            \"id\": 1,\n            \"title\": \"T\u00edtulo del Libro\",\n            \"author\": \"Autor del Libro\",\n            \"pages\": 123,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/1\"\n            }\n        },\n        {\n            \"id\": 5,\n            \"title\": \"Asperiores cumque dolor explicabo temporibus fuga.\",\n            \"author\": \"Prof. Alexandro Zieme\",\n            \"pages\": 186,\n            \"created_at\": \"2021-06-24\",\n            \"links\": {\n                \"status\": \"created\",\n                \"url\": \"\\\/api\\\/books\\\/5\"\n            }\n        }\n    ]\n}\n",
+                            "name": "200, Removed"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\n    \"status\": \"ERROR\",\n    \"error\": \"404 Not Found\"\n  }\n",
+                            "name": "404, Not Found"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "User management",
+            "description": "\nAPIs for managing users",
+            "item": [
+                {
+                    "name": "Get Users data",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user\/:user_id",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/user\/:user_id",
+                            "variable": [
+                                {
+                                    "id": "user_id",
+                                    "key": "user_id",
+                                    "value": "9",
+                                    "description": "the ID of the user example 12"
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"id\": 4,\n \"name\": \"Jessica Jones\"\n}",
+                            "name": "200, success"
+                        },
+                        {
+                            "header": [],
+                            "code": 404,
+                            "body": "{\"message\": \"User not found\"}",
+                            "name": "404, user not found"
+                        }
+                    ]
+                },
+                {
+                    "name": "Return all Users",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "api\/user",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/api\/user"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                }
+                            ],
+                            "code": 200,
+                            "body": "{\"uno\":\"dos\"}",
+                            "name": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

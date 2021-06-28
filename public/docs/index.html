@@ -1,0 +1,1170 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Laravel Api Documentation Test</title>
+
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../docs/css/theme-default.style.css" media="screen">
+    <link rel="stylesheet" href="../docs/css/theme-default.print.css" media="print">
+    <script src="../docs/js/theme-default-3.2.0.js"></script>
+
+    <link rel="stylesheet"
+          href="//unpkg.com/@highlightjs/cdn-assets@10.7.2/styles/obsidian.min.css">
+    <script src="//unpkg.com/@highlightjs/cdn-assets@10.7.2/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+
+    <script src="//cdn.jsdelivr.net/npm/lodash@4.17.10/lodash.min.js"></script>
+    <script>
+        var baseUrl = "http://lumen-valet.test";
+    </script>
+    <script src="../docs/js/tryitout-3.2.0.js"></script>
+
+</head>
+
+<body data-languages="[&quot;bash&quot;,&quot;javascript&quot;]">
+<a href="#" id="nav-button">
+      <span>
+        MENU
+        <img src="../docs/images/navbar.png" alt="navbar-image" />
+      </span>
+</a>
+<div class="tocify-wrapper">
+                <div class="lang-selector">
+                            <a href="#" data-language-name="bash">bash</a>
+                            <a href="#" data-language-name="javascript">javascript</a>
+                    </div>
+        <div class="search">
+        <input type="text" class="search" id="input-search" placeholder="Search">
+    </div>
+    <ul class="search-results"></ul>
+
+    <ul id="toc">
+    </ul>
+
+            <ul class="toc-footer" id="toc-footer">
+                            <li><a href="../docs/collection.json">View Postman collection</a></li>
+                            <li><a href="../docs/openapi.yaml">View OpenAPI spec</a></li>
+                            <li><a href="http://github.com/knuckleswtf/scribe">Documentation powered by Scribe ✍</a></li>
+                    </ul>
+            <ul class="toc-footer" id="last-updated">
+            <li>Last updated: June 25 2021</li>
+        </ul>
+</div>
+<div class="page-wrapper">
+    <div class="dark-box"></div>
+    <div class="content">
+        <h1>Introduction</h1>
+<p>A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.</p>
+<p>This documentation aims to provide all the information you need to work with our API REST.</p>
+<aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
+You can switch the language used with the tabs at the top right (or from the nav menu at the top left on mobile).</aside>
+<blockquote>
+<p>Base URL</p>
+</blockquote>
+<pre><code class="language-yaml">http://lumen-valet.test/</code></pre>
+
+        <h1>Authenticating requests</h1>
+<p>This API is not authenticated.</p>
+
+        <h1 id="books-management-scribe">Books management Scribe</h1>
+    <p>
+        <p>SCRIBE Documentation. APIs for managing Books. Aquí se puede poner todo el texto que se requiera.</p>
+<p>Por ejemplo, esto puede ser otro párrafo.</p>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ... cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. ... Parte del libro 'Finibus Bonorum et Malorum' de Cicerón.</p>
+    </p>
+
+            <h2 id="books-management-scribe-GETapi-books">GET Devuelve Todos los Libros ACTIVOS.</h2>
+
+<p>
+</p>
+
+<p>Se puede dejar que el sistema devuelva automáticamente la respuesta (teniendo Factory y Transformer lo hace) o realizar un json como respuesta</p>
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://lumen-valet.test/api/books" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;T&iacute;tulo del Libro&quot;,
+            &quot;author&quot;: &quot;Autor del Libro&quot;,
+            &quot;pages&quot;: 123,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/1&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;title&quot;: &quot;Asperiores cumque dolor explicabo temporibus fuga.&quot;,
+            &quot;author&quot;: &quot;Prof. Alexandro Zieme&quot;,
+            &quot;pages&quot;: 186,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/5&quot;
+            }
+        }
+    ]
+}
+ </code>
+        </pre>
+    <div id="execution-results-GETapi-books" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-books"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-books"></code></pre>
+</div>
+<div id="execution-error-GETapi-books" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-books"></code></pre>
+</div>
+<form id="form-GETapi-books" data-method="GET"
+      data-path="api/books"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-books', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-books"
+                    onclick="tryItOut('GETapi-books');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-books"
+                    onclick="cancelTryOut('GETapi-books');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-books" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/books</code></b>
+        </p>
+                    </form>
+
+            <h2 id="books-management-scribe-POSTapi-books">POST. Crea un libro y lo introduce si es correcto en la colección</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request POST \
+    "http://lumen-valet.test/api/books" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"Libro de Pruebas\",
+    \"author\": \"Paul Bettenan\",
+    \"pages\": 13
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "Libro de Pruebas",
+    "author": "Paul Bettenan",
+    "pages": 13
+}
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 83,
+        &quot;title&quot;: &quot;Libro de Pruebas&quot;,
+        &quot;author&quot;: &quot;Paul Bettenan&quot;,
+        &quot;pages&quot;: 20,
+        &quot;created_at&quot;: &quot;2021-06-25&quot;,
+        &quot;links&quot;: {
+            &quot;status&quot;: &quot;created&quot;,
+            &quot;url&quot;: &quot;\/api\/books\/83&quot;
+        }
+    }
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (422, Unprocessable Entity):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;name&quot;: [
+        &quot;The name has already been taken.&quot;
+    ],
+    &quot;author&quot;: [
+        &quot;The author field is required.&quot;
+    ]
+}
+ </code>
+        </pre>
+    <div id="execution-results-POSTapi-books" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-books"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-books"></code></pre>
+</div>
+<div id="execution-error-POSTapi-books" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-books"></code></pre>
+</div>
+<form id="form-POSTapi-books" data-method="POST"
+      data-path="api/books"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-books', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-books"
+                    onclick="tryItOut('POSTapi-books');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-books"
+                    onclick="cancelTryOut('POSTapi-books');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-books" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/books</code></b>
+        </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="POSTapi-books" data-component="body" required  hidden>
+<br>
+<p>Nombre o título del libro. Debe ser único en todo el sistema.</p>        </p>
+                <p>
+            <b><code>author</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="author" data-endpoint="POSTapi-books" data-component="body" required  hidden>
+<br>
+<p>Autor del libro.</p>        </p>
+                <p>
+            <b><code>pages</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="pages" data-endpoint="POSTapi-books" data-component="body" required  hidden>
+<br>
+<p>Número de páginas del libro</p>        </p>
+    
+    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>name</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>campo contiene los errores generados. en este caso, el campo name debe ser únic, Pueden existir tantos campos como errores generados, donde la clave es el campo de entrada con error</p>        </p>
+                <h2 id="books-management-scribe-GETapi-books--book_id-">GET Devuelve los datos de un libro existente.</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://lumen-valet.test/api/books/12" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books/12"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200, Found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 83,
+        &quot;title&quot;: &quot;Libro de Pruebas&quot;,
+        &quot;author&quot;: &quot;Paul Bettenan&quot;,
+        &quot;pages&quot;: 20,
+        &quot;created_at&quot;: &quot;2021-06-25&quot;,
+        &quot;links&quot;: {
+            &quot;status&quot;: &quot;created&quot;,
+            &quot;url&quot;: &quot;\/api\/books\/83&quot;
+        }
+    }
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (404, Not Found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;status&quot;: &quot;ERROR&quot;,
+    &quot;error&quot;: &quot;404 Not Found&quot;
+}
+ </code>
+        </pre>
+    <div id="execution-results-GETapi-books--book_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-books--book_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-books--book_id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-books--book_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-books--book_id-"></code></pre>
+</div>
+<form id="form-GETapi-books--book_id-" data-method="GET"
+      data-path="api/books/{book_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-books--book_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-books--book_id-"
+                    onclick="tryItOut('GETapi-books--book_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-books--book_id-"
+                    onclick="cancelTryOut('GETapi-books--book_id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-books--book_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/books/{book_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>book_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="book_id" data-endpoint="GETapi-books--book_id-" data-component="url" required  hidden>
+<br>
+<p>Identificador del libro a devolver</p>            </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>status</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Status of the Response</p>        </p>
+            <p>
+            <b><code>error</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Descripción del error</p>        </p>
+                <h2 id="books-management-scribe-PUTapi-books--book_id-">PUT. Modificación de un libro. Debe recibir TODOS los parámetros del objeto Libro.</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PUT \
+    "http://lumen-valet.test/api/books/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"molestiae\",
+    \"author\": \"animi\",
+    \"pages\": 169
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "molestiae",
+    "author": "animi",
+    "pages": 169
+}
+
+fetch(url, {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200, Modified):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 83,
+        &quot;title&quot;: &quot;Libro de Pruebas&quot;,
+        &quot;author&quot;: &quot;Paul Bettenan&quot;,
+        &quot;pages&quot;: 20,
+        &quot;created_at&quot;: &quot;2021-06-25&quot;,
+        &quot;links&quot;: {
+            &quot;status&quot;: &quot;created&quot;,
+            &quot;url&quot;: &quot;\/api\/books\/83&quot;
+        }
+    }
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (404, Not Found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;status&quot;: &quot;ERROR&quot;,
+    &quot;error&quot;: &quot;404 Not Found&quot;
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (422, Unprocessable Entity):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;name&quot;: [
+        &quot;The name has already been taken.&quot;
+    ],
+    &quot;author&quot;: [
+        &quot;The author field is required.&quot;
+    ]
+}
+ </code>
+        </pre>
+    <div id="execution-results-PUTapi-books--book_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PUTapi-books--book_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PUTapi-books--book_id-"></code></pre>
+</div>
+<div id="execution-error-PUTapi-books--book_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PUTapi-books--book_id-"></code></pre>
+</div>
+<form id="form-PUTapi-books--book_id-" data-method="PUT"
+      data-path="api/books/{book_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('PUTapi-books--book_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PUTapi-books--book_id-"
+                    onclick="tryItOut('PUTapi-books--book_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PUTapi-books--book_id-"
+                    onclick="cancelTryOut('PUTapi-books--book_id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PUTapi-books--book_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-darkblue">PUT</small>
+            <b><code>api/books/{book_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>book_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="book_id" data-endpoint="PUTapi-books--book_id-" data-component="url" required  hidden>
+<br>
+<p>Identificador del libro a modificar</p>            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="name" data-endpoint="PUTapi-books--book_id-" data-component="body" required  hidden>
+<br>
+<p>Nombre del libro</p>        </p>
+                <p>
+            <b><code>author</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<input type="text" name="author" data-endpoint="PUTapi-books--book_id-" data-component="body" required  hidden>
+<br>
+<p>Autor del libro</p>        </p>
+                <p>
+            <b><code>pages</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="pages" data-endpoint="PUTapi-books--book_id-" data-component="body" required  hidden>
+<br>
+<p>Núnero de páginas del libro</p>        </p>
+    
+    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>status</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Status of the Response</p>        </p>
+            <p>
+            <b><code>error</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Descripción del error</p>        </p>
+                <h2 id="books-management-scribe-PATCHapi-books--book_id-">PATCH. Modificación de parte de un libro. Debe recibir al menos 1 de los parámetros de entrada</h2>
+
+<p>
+</p>
+
+<aside class="notice">Al menos debes mandar 1 parámetro del Body 😕</aside>
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request PATCH \
+    "http://lumen-valet.test/api/books/1" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"name\": \"harum\",
+    \"author\": \"aut\",
+    \"pages\": 180
+}"
+</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books/1"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "name": "harum",
+    "author": "aut",
+    "pages": 180
+}
+
+fetch(url, {
+    method: "PATCH",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200, Modified):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: {
+        &quot;id&quot;: 83,
+        &quot;title&quot;: &quot;Libro de Pruebas&quot;,
+        &quot;author&quot;: &quot;Paul Bettenan&quot;,
+        &quot;pages&quot;: 20,
+        &quot;created_at&quot;: &quot;2021-06-25&quot;,
+        &quot;links&quot;: {
+            &quot;status&quot;: &quot;created&quot;,
+            &quot;url&quot;: &quot;\/api\/books\/83&quot;
+        }
+    }
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (404, Not Found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;status&quot;: &quot;ERROR&quot;,
+    &quot;error&quot;: &quot;404 Not Found&quot;
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (422, Unprocessable Entity):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;name&quot;: [
+        &quot;The name has already been taken.&quot;
+    ],
+    &quot;author&quot;: [
+        &quot;The author field is required.&quot;
+    ]
+}
+ </code>
+        </pre>
+    <div id="execution-results-PATCHapi-books--book_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-PATCHapi-books--book_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-PATCHapi-books--book_id-"></code></pre>
+</div>
+<div id="execution-error-PATCHapi-books--book_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-PATCHapi-books--book_id-"></code></pre>
+</div>
+<form id="form-PATCHapi-books--book_id-" data-method="PATCH"
+      data-path="api/books/{book_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('PATCHapi-books--book_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-PATCHapi-books--book_id-"
+                    onclick="tryItOut('PATCHapi-books--book_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-PATCHapi-books--book_id-"
+                    onclick="cancelTryOut('PATCHapi-books--book_id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-PATCHapi-books--book_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-purple">PATCH</small>
+            <b><code>api/books/{book_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>book_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="book_id" data-endpoint="PATCHapi-books--book_id-" data-component="url" required  hidden>
+<br>
+<p>Identificador del libro a modificar</p>            </p>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <p>
+            <b><code>name</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="name" data-endpoint="PATCHapi-books--book_id-" data-component="body"  hidden>
+<br>
+<p>Nombre del libro</p>        </p>
+                <p>
+            <b><code>author</code></b>&nbsp;&nbsp;<small>string</small>     <i>optional</i> &nbsp;
+<input type="text" name="author" data-endpoint="PATCHapi-books--book_id-" data-component="body"  hidden>
+<br>
+<p>Autor del libro</p>        </p>
+                <p>
+            <b><code>pages</code></b>&nbsp;&nbsp;<small>integer</small>     <i>optional</i> &nbsp;
+<input type="number" name="pages" data-endpoint="PATCHapi-books--book_id-" data-component="body"  hidden>
+<br>
+<p>Núnero de páginas del libro</p>        </p>
+    
+    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>status</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Status of the Response</p>        </p>
+            <p>
+            <b><code>error</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Descripción del error</p>        </p>
+                <h2 id="books-management-scribe-DELETEapi-books--book_id-">DELETE. Elimina (soft delete) un libro de la colección</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request DELETE \
+    "http://lumen-valet.test/api/books/3" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/books/3"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "DELETE",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;T&iacute;tulo del Libro&quot;,
+            &quot;author&quot;: &quot;Autor del Libro&quot;,
+            &quot;pages&quot;: 123,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/1&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;title&quot;: &quot;Asperiores cumque dolor explicabo temporibus fuga.&quot;,
+            &quot;author&quot;: &quot;Prof. Alexandro Zieme&quot;,
+            &quot;pages&quot;: 186,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/5&quot;
+            }
+        }
+    ]
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (200, Removed):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;data&quot;: [
+        {
+            &quot;id&quot;: 1,
+            &quot;title&quot;: &quot;T&iacute;tulo del Libro&quot;,
+            &quot;author&quot;: &quot;Autor del Libro&quot;,
+            &quot;pages&quot;: 123,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/1&quot;
+            }
+        },
+        {
+            &quot;id&quot;: 5,
+            &quot;title&quot;: &quot;Asperiores cumque dolor explicabo temporibus fuga.&quot;,
+            &quot;author&quot;: &quot;Prof. Alexandro Zieme&quot;,
+            &quot;pages&quot;: 186,
+            &quot;created_at&quot;: &quot;2021-06-24&quot;,
+            &quot;links&quot;: {
+                &quot;status&quot;: &quot;created&quot;,
+                &quot;url&quot;: &quot;\/api\/books\/5&quot;
+            }
+        }
+    ]
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (404, Not Found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;status&quot;: &quot;ERROR&quot;,
+    &quot;error&quot;: &quot;404 Not Found&quot;
+}
+ </code>
+        </pre>
+    <div id="execution-results-DELETEapi-books--book_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-DELETEapi-books--book_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-DELETEapi-books--book_id-"></code></pre>
+</div>
+<div id="execution-error-DELETEapi-books--book_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-DELETEapi-books--book_id-"></code></pre>
+</div>
+<form id="form-DELETEapi-books--book_id-" data-method="DELETE"
+      data-path="api/books/{book_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('DELETEapi-books--book_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-DELETEapi-books--book_id-"
+                    onclick="tryItOut('DELETEapi-books--book_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-DELETEapi-books--book_id-"
+                    onclick="cancelTryOut('DELETEapi-books--book_id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-DELETEapi-books--book_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-red">DELETE</small>
+            <b><code>api/books/{book_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>book_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="book_id" data-endpoint="DELETEapi-books--book_id-" data-component="url" required  hidden>
+<br>
+<p>Id del libro a eliminar</p>            </p>
+                    </form>
+
+    <h3>Response</h3>
+    <h4 class="fancy-heading-panel"><b>Response Fields</b></h4>
+            <p>
+            <b><code>data</code></b>&nbsp;&nbsp;<small>array</small>  &nbsp;
+<br>
+<p>que contendrá la colección de los libros</p>        </p>
+            <p>
+            <b><code>id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<br>
+<p>Identificador del libro</p>        </p>
+            <p>
+            <b><code>title</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<br>
+<p>Título del libro</p>        </p>
+            <p>
+            <b><code>author</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<br>
+<p>Autor del libro</p>        </p>
+            <p>
+            <b><code>pages</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<br>
+<p>Número de páginas</p>        </p>
+            <p>
+            <b><code>created_at</code></b>&nbsp;&nbsp;<small>string</small>  &nbsp;
+<br>
+<p>date Fecha de creación</p>        </p>
+            <p>
+            <b><code>links</code></b>&nbsp;&nbsp;<small>object</small>  &nbsp;
+<br>
+<p>Objeto que contendrá los campos status y url</p>        </p>
+            <p>
+            <b><code>status</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Status of the Response</p>        </p>
+            <p>
+            <b><code>url</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Url de acceso a la informaciíon del libro</p>        </p>
+            <p>
+            <b><code>error</code></b>&nbsp;&nbsp;  &nbsp;
+<br>
+<p>Descripción del error</p>        </p>
+            <h1 id="user-management">User management</h1>
+    <p>
+        <p>APIs for managing users</p>
+    </p>
+
+            <h2 id="user-management-GETapi-user--user_id-">Get Users data</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://lumen-valet.test/api/user/9" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/user/9"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200, success):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;id&quot;: 4,
+    &quot;name&quot;: &quot;Jessica Jones&quot;
+}
+ </code>
+        </pre>
+            <blockquote>
+            <p>Example response (404, user not found):</p>
+        </blockquote>
+                <pre>
+                <code class="language-json">
+
+{
+    &quot;message&quot;: &quot;User not found&quot;
+}
+ </code>
+        </pre>
+    <div id="execution-results-GETapi-user--user_id-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user--user_id-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user--user_id-"></code></pre>
+</div>
+<div id="execution-error-GETapi-user--user_id-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user--user_id-"></code></pre>
+</div>
+<form id="form-GETapi-user--user_id-" data-method="GET"
+      data-path="api/user/{user_id}"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user--user_id-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user--user_id-"
+                    onclick="tryItOut('GETapi-user--user_id-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user--user_id-"
+                    onclick="cancelTryOut('GETapi-user--user_id-');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user--user_id-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user/{user_id}</code></b>
+        </p>
+                    <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <p>
+                <b><code>user_id</code></b>&nbsp;&nbsp;<small>integer</small>  &nbsp;
+<input type="number" name="user_id" data-endpoint="GETapi-user--user_id-" data-component="url" required  hidden>
+<br>
+<p>the ID of the user example 12</p>            </p>
+                    </form>
+
+            <h2 id="user-management-GETapi-user">Return all Users</h2>
+
+<p>
+</p>
+
+
+
+<blockquote>Example request:</blockquote>
+
+
+<pre><code class="language-bash">curl --request GET \
+    --get "http://lumen-valet.test/api/user" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre>
+
+<pre><code class="language-javascript">const url = new URL(
+    "http://lumen-valet.test/api/user"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "GET",
+    headers,
+}).then(response =&gt; response.json());</code></pre>
+
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary>
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre>
+            <code class="language-http">cache-control: no-cache, private
+content-type: application/json
+ </code>
+            </pre>
+        </details>         <pre>
+                <code class="language-json">
+
+{
+    &quot;uno&quot;: &quot;dos&quot;
+}
+ </code>
+        </pre>
+    <div id="execution-results-GETapi-user" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-GETapi-user"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-GETapi-user"></code></pre>
+</div>
+<div id="execution-error-GETapi-user" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-GETapi-user"></code></pre>
+</div>
+<form id="form-GETapi-user" data-method="GET"
+      data-path="api/user"
+      data-authed="0"
+      data-hasfiles="0"
+      data-headers='{"Content-Type":"application\/json","Accept":"application\/json"}'
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-user', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-GETapi-user"
+                    onclick="tryItOut('GETapi-user');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-GETapi-user"
+                    onclick="cancelTryOut('GETapi-user');" hidden>Cancel
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-GETapi-user" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-green">GET</small>
+            <b><code>api/user</code></b>
+        </p>
+                    </form>
+
+    
+
+        
+    </div>
+    <div class="dark-box">
+                    <div class="lang-selector">
+                                    <a href="#" data-language-name="bash">bash</a>
+                                    <a href="#" data-language-name="javascript">javascript</a>
+                            </div>
+            </div>
+</div>
+<script>
+    $(function () {
+        var exampleLanguages = ["bash","javascript"];
+        setupLanguages(exampleLanguages);
+    });
+</script>
+</body>
+</html>

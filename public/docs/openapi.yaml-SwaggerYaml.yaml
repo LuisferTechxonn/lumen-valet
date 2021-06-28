@@ -1,0 +1,599 @@
+swagger: '2.0'
+info:
+  version: '1.0.0'
+  title: Laravel Api Documentation Test
+  description: A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.
+  contact: {}
+host: lumen-valet.test
+basePath: /
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /api/books:
+    get:
+      description: Se puede dejar que el sistema devuelva automáticamente la respuesta (teniendo Factory y Transformer lo hace) o realizar un json como respuesta
+      summary: GET Devuelve Todos los Libros ACTIVOS.
+      tags:
+      - Books management Scribe
+      operationId: GETDevuelveTodoslosLibrosACTIVOS.
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: '200'
+          schema:
+            $ref: '#/definitions/ApiBooksResponse'
+          headers: {}
+      security: []
+    post:
+      description: POST. Crea un libro y lo introduce si es correcto en la colección
+      summary: POST. Crea un libro y lo introduce si es correcto en la colección
+      tags:
+      - Books management Scribe
+      operationId: POST.Creaunlibroylointroducesiescorrectoenlacolección
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        default: application/json
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ApiBooksRequest'
+      responses:
+        '200':
+          description: '200'
+          schema:
+            $ref: '#/definitions/ApiBooksResponse1'
+          headers: {}
+        '422':
+          description: 422, Unprocessable Entity
+          schema:
+            $ref: '#/definitions/ApiBooks422Error1'
+          headers: {}
+      security: []
+  /api/books/{book_id}:
+    get:
+      description: GET Devuelve los datos de un libro existente.
+      summary: GET Devuelve los datos de un libro existente.
+      tags:
+      - Books management Scribe
+      operationId: GETDevuelvelosdatosdeunlibroexistente.
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: book_id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: Identificador del libro a devolver
+      - name: Content-Type
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: 200, Found
+          schema:
+            $ref: '#/definitions/ApiBooksResponse1'
+          headers: {}
+        '404':
+          description: 404, Not Found
+          schema:
+            $ref: '#/definitions/ApiBooks404Error1'
+          headers: {}
+      security: []
+    put:
+      description: PUT. Modificación de un libro. Debe recibir TODOS los parámetros del objeto Libro.
+      summary: PUT. Modificación de un libro. Debe recibir TODOS los parámetros del objeto Libro.
+      tags:
+      - Books management Scribe
+      operationId: PUT.Modificacióndeunlibro.DeberecibirTODOSlosparámetrosdelobjetoLibro.
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: book_id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: Identificador del libro a devolver
+      - name: Content-Type
+        in: header
+        required: false
+        default: application/json
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/ApiBooksRequest1'
+      responses:
+        '200':
+          description: 200, Modified
+          schema:
+            $ref: '#/definitions/ApiBooksResponse1'
+          headers: {}
+        '404':
+          description: 404, Not Found
+          schema:
+            $ref: '#/definitions/ApiBooks404Error1'
+          headers: {}
+        '422':
+          description: 422, Unprocessable Entity
+          schema:
+            $ref: '#/definitions/ApiBooks422Error21'
+          headers: {}
+      security: []
+    patch:
+      description: "<aside class=\"notice\">Al menos debes mandar 1 parámetro del Body \U0001F615</aside>"
+      summary: PATCH. Modificación de parte de un libro. Debe recibir al menos 1 de los parámetros de entrada
+      tags:
+      - Books management Scribe
+      operationId: PATCH.Modificacióndepartedeunlibro.Deberecibiralmenos1delosparámetrosdeentrada
+      deprecated: false
+      produces:
+      - application/json
+      consumes:
+      - application/json
+      parameters:
+      - name: book_id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: Identificador del libro a devolver
+      - name: Content-Type
+        in: header
+        required: false
+        default: application/json
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: body
+        in: body
+        required: false
+        description: ''
+        schema:
+          $ref: '#/definitions/ApiBooksRequest2'
+      responses:
+        '200':
+          description: 200, Modified
+          schema:
+            $ref: '#/definitions/ApiBooksResponse1'
+          headers: {}
+        '404':
+          description: 404, Not Found
+          schema:
+            $ref: '#/definitions/ApiBooks404Error1'
+          headers: {}
+        '422':
+          description: 422, Unprocessable Entity
+          schema:
+            $ref: '#/definitions/ApiBooks422Error21'
+          headers: {}
+      security: []
+    delete:
+      description: DELETE. Elimina (soft delete) un libro de la colección
+      summary: DELETE. Elimina (soft delete) un libro de la colección
+      tags:
+      - Books management Scribe
+      operationId: DELETE.Elimina(softdelete)unlibrodelacolección
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: book_id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: Identificador del libro a devolver
+      - name: Content-Type
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: 200, Removed
+          schema:
+            $ref: '#/definitions/ApiBooksResponse5'
+          headers: {}
+        '404':
+          description: 404, Not Found
+          schema:
+            $ref: '#/definitions/ApiBooks404Error1'
+          headers: {}
+      security: []
+  /api/user/{user_id}:
+    get:
+      description: Get Users data
+      summary: Get Users data
+      tags:
+      - User management
+      operationId: GetUsersdata
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: user_id
+        in: path
+        required: true
+        type: integer
+        format: int32
+        description: the ID of the user example 12
+      - name: Content-Type
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: 200, success
+          schema:
+            $ref: '#/definitions/ApiUserResponse'
+          headers: {}
+        '404':
+          description: 404, user not found
+          schema:
+            $ref: '#/definitions/ApiUser404Error1'
+          headers: {}
+      security: []
+  /api/user:
+    get:
+      description: Return all Users
+      summary: Return all Users
+      tags:
+      - User management
+      operationId: ReturnallUsers
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Content-Type
+        in: header
+        required: false
+        type: string
+        description: ''
+      - name: Accept
+        in: header
+        required: false
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          schema:
+            $ref: '#/definitions/ApiUserResponse1'
+          headers: {}
+      security: []
+definitions:
+  ApiBooksResponse:
+    title: ApiBooksResponse
+    example:
+      data:
+      - id: 1
+        title: Título del Libro
+        author: Autor del Libro
+        pages: 123
+        created_at: 2021-06-24
+        links:
+          status: created
+          url: /api/books/1
+      - id: 5
+        title: Asperiores cumque dolor explicabo temporibus fuga.
+        author: Prof. Alexandro Zieme
+        pages: 186
+        created_at: 2021-06-24
+        links:
+          status: created
+          url: /api/books/5
+    type: object
+    properties:
+      data:
+        example:
+        - id: 1
+          title: Título del Libro
+          author: Autor del Libro
+          pages: 123
+          created_at: 2021-06-24
+          links:
+            status: created
+            url: /api/books/1
+        - id: 5
+          title: Asperiores cumque dolor explicabo temporibus fuga.
+          author: Prof. Alexandro Zieme
+          pages: 186
+          created_at: 2021-06-24
+          links:
+            status: created
+            url: /api/books/5
+        type: array
+        items:
+          type: object
+  ApiBooksRequest:
+    title: ApiBooksRequest
+    type: object
+    properties:
+      name:
+        description: Nombre o título del libro. Debe ser único en todo el sistema.
+        example: Libro de Pruebas
+        type: string
+      author:
+        description: Autor del libro.
+        example: Paul Bettenan
+        type: string
+      pages:
+        description: Número de páginas del libro
+        example: 18
+        type: integer
+        format: int32
+    required:
+    - name
+    - author
+    - pages
+  ApiBooksResponse1:
+    title: ApiBooksResponse1
+    example:
+      data:
+        id: 83
+        title: Libro de Pruebas
+        author: Paul Bettenan
+        pages: 20
+        created_at: 2021-06-25
+        links:
+          status: created
+          url: /api/books/83
+    type: object
+    properties:
+      data:
+        example:
+          id: 83
+          title: Libro de Pruebas
+          author: Paul Bettenan
+          pages: 20
+          created_at: 2021-06-25
+          links:
+            status: created
+            url: /api/books/83
+        type: object
+  ApiBooks422Error1:
+    title: ApiBooks422Error1
+    example:
+      name:
+      - The name has already been taken.
+      author:
+      - The author field is required.
+    type: object
+    properties:
+      name:
+        description: campo contiene los errores generados. en este caso, el campo name debe ser únic, Pueden existir tantos campos como errores generados, donde la clave es el campo de entrada con error
+        example:
+        - The name has already been taken.
+        type: array
+        items:
+          type: string
+      author:
+        example:
+        - The author field is required.
+        type: array
+        items:
+          type: string
+  ApiBooks404Error1:
+    title: ApiBooks404Error1
+    example:
+      status: ERROR
+      error: 404 Not Found
+    type: object
+    properties:
+      status:
+        description: Status of the Response
+        example: ERROR
+        type: string
+      error:
+        description: Descripción del error
+        example: 404 Not Found
+        type: string
+  ApiBooksRequest1:
+    title: ApiBooksRequest1
+    type: object
+    properties:
+      name:
+        description: Nombre del libro
+        example: at
+        type: string
+      author:
+        description: Autor del libro
+        example: qui
+        type: string
+      pages:
+        description: Núnero de páginas del libro
+        example: 169
+        type: integer
+        format: int32
+    required:
+    - name
+    - author
+    - pages
+  ApiBooks422Error21:
+    title: ApiBooks422Error21
+    example:
+      name:
+      - The name has already been taken.
+      author:
+      - The author field is required.
+    type: object
+    properties:
+      name:
+        example:
+        - The name has already been taken.
+        type: array
+        items:
+          type: string
+      author:
+        example:
+        - The author field is required.
+        type: array
+        items:
+          type: string
+  ApiBooksRequest2:
+    title: ApiBooksRequest2
+    type: object
+    properties:
+      name:
+        description: Nombre del libro
+        example: et
+        type: string
+      author:
+        description: Autor del libro
+        example: totam
+        type: string
+      pages:
+        description: Núnero de páginas del libro
+        example: 180
+        type: integer
+        format: int32
+  ApiBooksResponse5:
+    title: ApiBooksResponse5
+    example:
+      data:
+      - id: 1
+        title: Título del Libro
+        author: Autor del Libro
+        pages: 123
+        created_at: 2021-06-24
+        links:
+          status: created
+          url: /api/books/1
+      - id: 5
+        title: Asperiores cumque dolor explicabo temporibus fuga.
+        author: Prof. Alexandro Zieme
+        pages: 186
+        created_at: 2021-06-24
+        links:
+          status: created
+          url: /api/books/5
+    type: object
+    properties:
+      data:
+        description: que contendrá la colección de los libros
+        example:
+        - id: 1
+          title: Título del Libro
+          author: Autor del Libro
+          pages: 123
+          created_at: 2021-06-24
+          links:
+            status: created
+            url: /api/books/1
+        - id: 5
+          title: Asperiores cumque dolor explicabo temporibus fuga.
+          author: Prof. Alexandro Zieme
+          pages: 186
+          created_at: 2021-06-24
+          links:
+            status: created
+            url: /api/books/5
+        type: array
+        items:
+          type: object
+  ApiUserResponse:
+    title: ApiUserResponse
+    example:
+      id: 4
+      name: Jessica Jones
+    type: object
+    properties:
+      id:
+        example: 4
+        type: integer
+        format: int32
+      name:
+        example: Jessica Jones
+        type: string
+  ApiUser404Error1:
+    title: ApiUser404Error1
+    example:
+      message: User not found
+    type: object
+    properties:
+      message:
+        example: User not found
+        type: string
+  ApiUserResponse1:
+    title: ApiUserResponse1
+    example:
+      uno: dos
+    type: object
+    properties:
+      uno:
+        example: dos
+        type: string
+tags:
+- name: Books management Scribe
+  description: ''
+- name: User management
+  description: ''

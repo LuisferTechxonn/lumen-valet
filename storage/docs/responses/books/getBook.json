@@ -1,0 +1,13 @@
+{
+    "data": {
+        "id": 83,
+        "title": "Libro de Pruebas",
+        "author": "Paul Bettenan",
+        "pages": 20,
+        "created_at": "2021-06-25",
+        "links": {
+            "status": "created",
+            "url": "\/api\/books\/83"
+        }
+    }
+}

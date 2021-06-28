@@ -1,0 +1,448 @@
+openapi: 3.0.3
+info:
+  title: 'Laravel Api Documentation Test'
+  description: 'A short description of your API. Will be included in the docs webpage, Postman collection and OpenAPI spec.'
+  version: 1.0.0
+servers:
+  -
+    url: 'http://lumen-valet.test'
+paths:
+  /api/books:
+    get:
+      summary: 'GET Devuelve Todos los Libros ACTIVOS.'
+      description: 'Se puede dejar que el sistema devuelva automáticamente la respuesta (teniendo Factory y Transformer lo hace) o realizar un json como respuesta'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: [{ id: 1, title: 'Título del Libro', author: 'Autor del Libro', pages: 123, created_at: '2021-06-24', links: { status: created, url: /api/books/1 } }, { id: 5, title: 'Asperiores cumque dolor explicabo temporibus fuga.', author: 'Prof. Alexandro Zieme', pages: 186, created_at: '2021-06-24', links: { status: created, url: /api/books/5 } }]
+                properties:
+                  data: { type: array, example: [{ id: 1, title: 'Título del Libro', author: 'Autor del Libro', pages: 123, created_at: '2021-06-24', links: { status: created, url: /api/books/1 } }, { id: 5, title: 'Asperiores cumque dolor explicabo temporibus fuga.', author: 'Prof. Alexandro Zieme', pages: 186, created_at: '2021-06-24', links: { status: created, url: /api/books/5 } }], items: { type: object } }
+      tags:
+        - 'Books management Scribe'
+      security: []
+    post:
+      summary: 'POST. Crea un libro y lo introduce si es correcto en la colección'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } }
+                properties:
+                  data: { type: object, example: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } } }
+        422:
+          description: '422, Unprocessable Entity'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  name: ['The name has already been taken.']
+                  author: ['The author field is required.']
+                properties:
+                  name: { type: array, example: ['The name has already been taken.'], description: 'campo contiene los errores generados. en este caso, el campo name debe ser únic, Pueden existir tantos campos como errores generados, donde la clave es el campo de entrada con error', items: { type: string } }
+                  author: { type: array, example: ['The author field is required.'], items: { type: string } }
+      tags:
+        - 'Books management Scribe'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Nombre o título del libro. Debe ser único en todo el sistema.'
+                  example: 'Libro de Pruebas'
+                author:
+                  type: string
+                  description: 'Autor del libro.'
+                  example: 'Paul Bettenan'
+                pages:
+                  type: integer
+                  description: 'Número de páginas del libro'
+                  example: 13
+              required:
+                - name
+                - author
+                - pages
+      security: []
+  '/api/books/{book_id}':
+    get:
+      summary: 'GET Devuelve los datos de un libro existente.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200, Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } }
+                properties:
+                  data: { type: object, example: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } } }
+        404:
+          description: '404, Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ERROR
+                  error: '404 Not Found'
+                properties:
+                  status: { type: string, example: ERROR, description: 'Status of the Response' }
+                  error: { type: string, example: '404 Not Found', description: 'Descripción del error' }
+      tags:
+        - 'Books management Scribe'
+      security: []
+    put:
+      summary: 'PUT. Modificación de un libro. Debe recibir TODOS los parámetros del objeto Libro.'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200, Modified'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } }
+                properties:
+                  data: { type: object, example: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } } }
+        404:
+          description: '404, Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ERROR
+                  error: '404 Not Found'
+                properties:
+                  status: { type: string, example: ERROR, description: 'Status of the Response' }
+                  error: { type: string, example: '404 Not Found', description: 'Descripción del error' }
+        422:
+          description: '422, Unprocessable Entity'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  name: ['The name has already been taken.']
+                  author: ['The author field is required.']
+                properties:
+                  name: { type: array, example: ['The name has already been taken.'], items: { type: string } }
+                  author: { type: array, example: ['The author field is required.'], items: { type: string } }
+      tags:
+        - 'Books management Scribe'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Nombre del libro'
+                  example: molestiae
+                author:
+                  type: string
+                  description: 'Autor del libro'
+                  example: animi
+                pages:
+                  type: integer
+                  description: 'Núnero de páginas del libro'
+                  example: 169
+              required:
+                - name
+                - author
+                - pages
+      security: []
+    patch:
+      summary: 'PATCH. Modificación de parte de un libro. Debe recibir al menos 1 de los parámetros de entrada'
+      description: '<aside class="notice">Al menos debes mandar 1 parámetro del Body 😕</aside>'
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200, Modified'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } }
+                properties:
+                  data: { type: object, example: { id: 83, title: 'Libro de Pruebas', author: 'Paul Bettenan', pages: 20, created_at: '2021-06-25', links: { status: created, url: /api/books/83 } } }
+        404:
+          description: '404, Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ERROR
+                  error: '404 Not Found'
+                properties:
+                  status: { type: string, example: ERROR, description: 'Status of the Response' }
+                  error: { type: string, example: '404 Not Found', description: 'Descripción del error' }
+        422:
+          description: '422, Unprocessable Entity'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  name: ['The name has already been taken.']
+                  author: ['The author field is required.']
+                properties:
+                  name: { type: array, example: ['The name has already been taken.'], items: { type: string } }
+                  author: { type: array, example: ['The author field is required.'], items: { type: string } }
+      tags:
+        - 'Books management Scribe'
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: 'Nombre del libro'
+                  example: harum
+                author:
+                  type: string
+                  description: 'Autor del libro'
+                  example: aut
+                pages:
+                  type: integer
+                  description: 'Núnero de páginas del libro'
+                  example: 180
+      security: []
+    delete:
+      summary: 'DELETE. Elimina (soft delete) un libro de la colección'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200, Removed'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: [{ id: 1, title: 'Título del Libro', author: 'Autor del Libro', pages: 123, created_at: '2021-06-24', links: { status: created, url: /api/books/1 } }, { id: 5, title: 'Asperiores cumque dolor explicabo temporibus fuga.', author: 'Prof. Alexandro Zieme', pages: 186, created_at: '2021-06-24', links: { status: created, url: /api/books/5 } }]
+                properties:
+                  data: { type: array, example: [{ id: 1, title: 'Título del Libro', author: 'Autor del Libro', pages: 123, created_at: '2021-06-24', links: { status: created, url: /api/books/1 } }, { id: 5, title: 'Asperiores cumque dolor explicabo temporibus fuga.', author: 'Prof. Alexandro Zieme', pages: 186, created_at: '2021-06-24', links: { status: created, url: /api/books/5 } }], description: 'que contendrá la colección de los libros', items: { type: object } }
+        404:
+          description: '404, Not Found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  status: ERROR
+                  error: '404 Not Found'
+                properties:
+                  status: { type: string, example: ERROR, description: 'Status of the Response' }
+                  error: { type: string, example: '404 Not Found', description: 'Descripción del error' }
+      tags:
+        - 'Books management Scribe'
+      security: []
+    parameters:
+      -
+        in: path
+        name: book_id
+        description: 'Identificador del libro a devolver'
+        example: 12
+        required: true
+        schema:
+          type: integer
+  '/api/user/{user_id}':
+    get:
+      summary: 'Get Users data'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: '200, success'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  id: 4
+                  name: 'Jessica Jones'
+                properties:
+                  id: { type: integer, example: 4 }
+                  name: { type: string, example: 'Jessica Jones' }
+        404:
+          description: '404, user not found'
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'User not found'
+                properties:
+                  message: { type: string, example: 'User not found' }
+      tags:
+        - 'User management'
+      security: []
+    parameters:
+      -
+        in: path
+        name: user_id
+        description: 'the ID of the user example 12'
+        example: 9
+        required: true
+        schema:
+          type: integer
+  /api/user:
+    get:
+      summary: 'Return all Users'
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  uno: dos
+                properties:
+                  uno: { type: string, example: dos }
+      tags:
+        - 'User management'
+      security: []
