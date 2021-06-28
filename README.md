@@ -104,3 +104,10 @@ The Lumen framework is open-sourced software licensed under the [MIT license](ht
 Aquí se puede ver cómo queda más o menos como ejemplo:
 
 ![Imagen](/storage/docs/imgs/ScribeExample.jpeg)
+![Imagen](/storage/docs/imgs/ScribeExample1.png)
+![Imagen](/storage/docs/imgs/ScribeExample2.png)
+![Imagen](/storage/docs/imgs/ScribeExample3.png)
+![Imagen](/storage/docs/imgs/ScribeExample4.png)
+![Imagen](/storage/docs/imgs/ScribeExample5.png)
+
+
