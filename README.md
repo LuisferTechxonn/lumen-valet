@@ -1,12 +1,14 @@
 # Lumen Api Documentation Generation TEST with SCRIBE. BOOKS
 
 [![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-
 [![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
 
 En la búsqueda de crear documentación, se han realizado dos mini-proyectos con sendas APIs CRUD, una de Libros y otra de Coches, generando documentación de Scribe y Swagger para ver cuál genera mejor, más rápido...
 
 En concreto esta versión se ha utilizado Scribe. La versión de Swagger está en el mismo repositorio y se denomina **lumen-valet-swagger**
+
+
+![Imagen](/storage/docs/imgs/ScribeExample.jpeg)
 
 ## Dependencias
 
@@ -96,3 +98,9 @@ php artisan db:seed --class=BooksSeeder
 ## Licencia
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## Imagen
+
+Aquí se puede ver cómo queda más o menos como ejemplo:
+
+![Imagen](/storage/docs/imgs/ScribeExample.jpeg)
